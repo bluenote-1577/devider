@@ -48,7 +48,7 @@ mamba install -c bioconda devider
 devider -h 
 ```
 
-#### Static binary (only x86)
+#### Static binary (only x86_64 architectures)
 
 ```sh
 wget https://github.com/bluenote-1577/devider/releases/download/latest/devider
