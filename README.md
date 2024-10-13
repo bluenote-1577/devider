@@ -2,7 +2,7 @@
 
 **devider** is a method that separates long reads (Nanopore or PacBio) of a mixture of sequences into groups with similar alleles. This is called "phasing" or "haplotyping". 
 
-devider is a "local haplotyping" method, so it works best when the sequence-of-interest is approximately the size of the reads. For genome-scale haplotyping, consider another tool such as [floria](https://github.com/bluenote-1577/floria).
+devider is a "local haplotyping" method, so it works best when the sequence-of-interest is approximately the size of the reads. For bacterial genome-scale haplotyping, consider another tool such as [floria](https://github.com/bluenote-1577/floria).
 
 ### Example use cases:
 
