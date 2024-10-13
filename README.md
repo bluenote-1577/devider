@@ -90,9 +90,7 @@ ls devider_pipeline_output/pipeline_files
 >./devider/scripts/run_devider_pipeline -i reads.fq.gz -r reference.fa -o pipeline_output
 >```
 
-## Manuals, tutorials, and cookbook
-
-### How to use devider
+## How to use devider
 
 * [Cookbook](https://github.com/bluenote-1577/devider/wiki/Cookbook) - see here for usage examples.
 * [Advanced usage manual](https://github.com/bluenote-1577/devider/wiki/Advanced-usage-manual) - see here for more detailed information about parameters and usage.
