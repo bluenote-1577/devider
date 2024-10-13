@@ -41,9 +41,19 @@ Similar tools exist for detection of similar haplotypes in mixtures. devider was
 > [!NOTE]
 > As of 2024-10-12, conda install is not ready yet. Will be available in the next few days. 
 
+#### Conda (preferred)
+
 ```sh
 mamba install -c bioconda devider
 devider -h 
+```
+
+#### Static binary (only x86)
+
+```sh
+wget https://github.com/bluenote-1577/devider/releases/download/latest/devider
+chmod +x devider
+./devider
 ```
 
 See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want want a static binary or you're **not** on x86-64 CPUs.
