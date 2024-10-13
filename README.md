@@ -88,9 +88,6 @@ ls devider_pipeline_output/pipeline_files
 * [Advanced usage manual](https://github.com/bluenote-1577/devider/wiki/Advanced-usage-manual) - see here for more detailed information about parameters and usage.
 * [Output format](https://github.com/bluenote-1577/devider/wiki/Output-format) - for more information on how to interpret outputs.
 
-### Tutorials
-
-* [Tutorial 1 - getting started with devider](https://github.com/bluenote-1577/devider/wiki/Tutorial-1:-getting-started-with-devider)
 
 ## Citation
 
