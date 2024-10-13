@@ -54,20 +54,22 @@ See the [installation instructions on the wiki](https://github.com/bluenote-1577
 ```sh
 git clone https://github.com/bluenote-1577/devider
 cd devider
-devider -b hiv_test/3000_95_3.bam  -v hiv_test/3000_95_3.vcf.gz  -r hiv_test/OR483991.1.fasta
+devider -b hiv_test/3000_95_3.bam  -v hiv_test/3000_95_3.vcf.gz  -r hiv_test/OR483991.1.fasta -o devider_output
 
 # results folder
 ls devider_output
 ```
 ### Option 2 (easier): Running devider with reads 
 ```sh
-run_devider_pipeline -i reads.fq.gz -r reference.fa -o pipeline_output
+git clone https://github.com/bluenote-1577/devider
+cd devider
+run_devider_pipeline -i hiv_test/3000_95_3.fastq.gz -r hiv_test/OR4839901.1.fasta -o devider_pipeline_output 
 
 # results folder
-ls pipeline_output
+ls devider_pipeline_output
 
 # intermediate files (bam + vcf files)
-ls pipeline_output/pipeline_files
+ls devider_pipeline_output/pipeline_files
 ```
 
 > [!NOTE]
