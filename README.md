@@ -2,7 +2,7 @@
 
 **devider** is a method that separates long reads (Nanopore or PacBio) of a mixture of sequences into groups with similar alleles. This is called "phasing" or "haplotyping". 
 
-devider is a "local haplotyping" method, so it works best when the sequence-of-interest is approximately the size of the reads. For genome-scale haplotyping, consider another tool such as [floria](https://github.com/bluenote-1577/floria).
+devider is a "local haplotyping" method, so it works best when the sequence-of-interest is approximately the size of the reads. For bacterial genome-scale haplotyping, consider another tool such as [floria](https://github.com/bluenote-1577/floria).
 
 ### Example use cases:
 
@@ -46,7 +46,7 @@ mamba install -c bioconda devider
 devider -h 
 ```
 
-See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want to compile directly or want a static binary.
+See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want want a static binary or you're **not** on x86-64 CPUs.
 
 ## Quick Start after install 
 
@@ -54,20 +54,22 @@ See the [installation instructions on the wiki](https://github.com/bluenote-1577
 ```sh
 git clone https://github.com/bluenote-1577/devider
 cd devider
-devider -b hiv_test/3000_95_3.bam  -v hiv_test/3000_95_3.vcf.gz  -r hiv_test/OR483991.1.fasta
+devider -b hiv_test/3000_95_3.bam  -v hiv_test/3000_95_3.vcf.gz  -r hiv_test/OR483991.1.fasta -o devider_output
 
 # results folder
 ls devider_output
 ```
 ### Option 2 (easier): Running devider with reads 
 ```sh
-run_devider_pipeline -i reads.fq.gz -r reference.fa -o pipeline_output
+git clone https://github.com/bluenote-1577/devider
+cd devider
+run_devider_pipeline -i hiv_test/3000_95_3.fastq.gz -r hiv_test/OR4839901.1.fasta -o devider_pipeline_output 
 
 # results folder
-ls pipeline_output
+ls devider_pipeline_output
 
 # intermediate files (bam + vcf files)
-ls pipeline_output/pipeline_files
+ls devider_pipeline_output/pipeline_files
 ```
 
 > [!NOTE]
@@ -86,9 +88,6 @@ ls pipeline_output/pipeline_files
 * [Advanced usage manual](https://github.com/bluenote-1577/devider/wiki/Advanced-usage-manual) - see here for more detailed information about parameters and usage.
 * [Output format](https://github.com/bluenote-1577/devider/wiki/Output-format) - for more information on how to interpret outputs.
 
-### Tutorials
-
-* [Tutorial 1 - getting started with devider](https://github.com/bluenote-1577/devider/wiki/Tutorial-1:-getting-started-with-devider)
 
 ## Citation
 

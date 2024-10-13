@@ -1,0 +1,52 @@
+name: "tagged-release"
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Check out the code"
+        uses: actions/checkout@v2
+
+      - name: "Set up Rust"
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: "Install dependencies"
+        run: sudo apt-get install -y musl musl-tools
+
+      - name: "Build the binary"
+        run: |
+          rustup target add x86_64-unknown-linux-musl
+          cargo build --release --target=x86_64-unknown-linux-musl
+
+      - name: "Create Release"
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: "Upload Release Asset"
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/x86_64-unknown-linux-musl/release/devider
+          asset_name: devider
+          asset_content_type: application/octet-stream
