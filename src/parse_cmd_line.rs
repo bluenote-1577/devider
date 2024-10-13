@@ -10,7 +10,7 @@ pub enum Preset{
 }
 
 #[derive(Parser, Debug)]
-#[command(name = "dbghaplo", version, about = "Long-read haplotyping for diverse small sequences (e.g. viruses, genes).", long_about = None)]
+#[command(name = "devider", version, about = "Long-read haplotyping for diverse small sequences (e.g. viruses, genes).", long_about = None)]
 pub struct Options{
 
     /// Number of threads to use.
@@ -36,7 +36,7 @@ pub struct Options{
     pub reference_fasta: String,
 
     /// Output directory.
-    #[arg(short, long, default_value = "dbghaplo_output", help_heading = "OUTPUT")]
+    #[arg(short, long, default_value = "devider_output", help_heading = "OUTPUT")]
     pub output_dir: String,
 
     /// Sequences to phase separated by commas (e.g. NC_001802.1:1-1000,NC_045512.2). See also
