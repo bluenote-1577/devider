@@ -385,35 +385,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ef8ae57c4978a2acd8b869ce6b9ca1dfe817bff704c220209fdef2c0b75a01b9"
 
 [[package]]
-name = "dbghaplo"
-version = "0.0.1"
-dependencies = [
- "assert_cmd",
- "bio",
- "bio-types 0.13.0",
- "block-aligner",
- "clap",
- "debruijn",
- "derivative",
- "disjoint-sets",
- "fishers_exact",
- "fxhash",
- "itertools 0.10.5",
- "log",
- "ordered-float 2.10.1",
- "predicates 1.0.8",
- "rand",
- "rand_core",
- "rayon",
- "rust-htslib",
- "rust-lapper",
- "simple_logger",
- "statrs 0.17.1",
- "tikv-jemallocator",
- "time",
-]
-
-[[package]]
 name = "debruijn"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -470,6 +441,35 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.77",
+]
+
+[[package]]
+name = "devider"
+version = "0.0.1"
+dependencies = [
+ "assert_cmd",
+ "bio",
+ "bio-types 0.13.0",
+ "block-aligner",
+ "clap",
+ "debruijn",
+ "derivative",
+ "disjoint-sets",
+ "fishers_exact",
+ "fxhash",
+ "itertools 0.10.5",
+ "log",
+ "ordered-float 2.10.1",
+ "predicates 1.0.8",
+ "rand",
+ "rand_core",
+ "rayon",
+ "rust-htslib",
+ "rust-lapper",
+ "simple_logger",
+ "statrs 0.17.1",
+ "tikv-jemallocator",
+ "time",
 ]
 
 [[package]]

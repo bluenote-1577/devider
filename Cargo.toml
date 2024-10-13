@@ -1,5 +1,5 @@
 [package]
-name = "dbghaplo"
+name = "devider"
 version = "0.0.1"
 authors = ["jim <jimshawster@gmail.com>"]
 edition = "2018"

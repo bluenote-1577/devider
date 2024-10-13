@@ -16,7 +16,7 @@ use std::io::{BufWriter, Write};
 use std::path::Path;
 use std::sync::Arc;
 
-pub fn dbghap_run(
+pub fn devider_run(
     mut dbg_frags:Vec<FragDBG>,
     options: &Options,
     snp_pos_to_genome_pos: &Vec<usize>,
@@ -99,7 +99,7 @@ pub fn dbghap_run(
     if let Some(opt_k) = options.k {
         k = opt_k;
     } else {
-        k = thirty.min(num_snps * 7 / 10).min(max_k_preset).max(1);
+        k = thirty.min(num_snps * 3 / 4).min(max_k_preset).max(1);
     }
 
     if k > num_snps {
@@ -390,7 +390,7 @@ pub fn dbghap_run(
                 &final_results_filtered,
                 num_snps,
                 options,
-                "haplotypes.fasta",
+                "snp_haplotypes.fasta",
                 "ids.txt",
                 output_reads,
                 (contig_name, range),
