@@ -12,7 +12,7 @@ def parse_args():
     # Set up argument parser
     parser = argparse.ArgumentParser(description="Tag BAM reads based on accessions from a given IDs file.")
     parser.add_argument('input_bam', type=str, help="Input BAM file.")
-    parser.add_argument('-i', '--ids_file', type=str, default="dbghap_output/ids.txt", help="IDs file with accessions and tags. Default: dbghap_output/ids.txt")
+    parser.add_argument('-i', '--ids_file', type=str, default="devider_output/ids.txt", help="IDs file with accessions and tags. Default: dbghap_output/ids.txt")
     return parser.parse_args()
 
 def check_files(input_bam, ids_file):

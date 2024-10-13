@@ -15,11 +15,11 @@ rand="0.8"
 rand_core="0.6"
 rust-htslib= { version = "0.44", default-features = false }
 clap = { version = "=4.2.0", features = ["derive"] }
+block-aligner = { version = "0.4", default-features = false }
 debruijn = "0.3"
 simple_logger="4"
 log="0.4"
 itertools = "0.10"
-block-aligner = { version = "0.4"}
 bio = "1.1"
 bio-types ="0.13"
 rust-lapper = "1.1"
@@ -36,6 +36,12 @@ neon = ["block-aligner/simd_neon"]
 
 [target.'cfg(target_env = "musl")'.dependencies]
 tikv-jemallocator = "0"
+
+#[target.'cfg(target_arch = "x86_64")'.dependencies]
+#block-aligner = { version = "0.4", features = ["simd_sse2"] }
+
+#[target.'cfg(target_arch = "aarch64")'.dependencies]
+#block-aligner = { version = "0.4", features = ["simd_neon"] }
 
 [dev-dependencies]
 assert_cmd = "1"
