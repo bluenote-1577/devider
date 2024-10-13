@@ -56,7 +56,7 @@ chmod +x devider
 ./devider
 ```
 
-See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want want a static binary or you're **not** on x86-64 CPUs.
+See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want want to compile devider (written in Rust) or you're **not** on x86-64 CPUs.
 
 ## Quick Start after install 
 
