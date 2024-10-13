@@ -46,7 +46,7 @@ mamba install -c bioconda devider
 devider -h 
 ```
 
-See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want to compile directly or want a static binary.
+See the [installation instructions on the wiki](https://github.com/bluenote-1577/devider/wiki/Installation) if you want want a static binary or you're **not** on x86-64 CPUs.
 
 ## Quick Start after install 
 
