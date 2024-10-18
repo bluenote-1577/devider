@@ -38,9 +38,6 @@ Similar tools exist for detection of similar haplotypes in mixtures. devider was
 
 ## Install
 
-> [!NOTE]
-> As of 2024-10-12, conda install is not ready yet. Will be available in the next few days. 
-
 #### Conda (preferred)
 
 ```sh
@@ -48,7 +45,7 @@ mamba install -c bioconda devider
 devider -h 
 ```
 
-#### Static binary (only x86_64 architectures)
+#### Static binary (only x86_64 architectures, without extra pipeline scripts)
 
 ```sh
 wget https://github.com/bluenote-1577/devider/releases/download/latest/devider
@@ -70,6 +67,8 @@ devider -b hiv_test/3000_95_3.bam  -v hiv_test/3000_95_3.vcf.gz  -r hiv_test/OR4
 ls devider_output
 ```
 ### Option 2 (easier): Running devider with reads 
+
+If installed from conda:
 ```sh
 git clone https://github.com/bluenote-1577/devider
 cd devider
@@ -82,13 +81,14 @@ ls devider_pipeline_output
 ls devider_pipeline_output/pipeline_files
 ```
 
-> [!NOTE]
->  If you **did not** install via conda, do the following instead. 
->```sh
->mamba install -c bioconda tabix samtools lofreq minimap2
->git clone https://github.com/bluenote-1577/devider
->./devider/scripts/run_devider_pipeline -i reads.fq.gz -r reference.fa -o pipeline_output
->```
+If you **did not** install via conda, do the following instead, you must ensure
+
+* tabix
+* minimap2
+* lofreq
+* devider
+
+are in `PATH`. Then run `scripts/run_devider_pipeline` as above.
 
 ## How to use devider
 
