@@ -73,7 +73,7 @@ ls devider_output
 ```sh
 git clone https://github.com/bluenote-1577/devider
 cd devider
-run_devider_pipeline -i hiv_test/3000_95_3.fastq.gz -r hiv_test/OR4839901.1.fasta -o devider_pipeline_output 
+run_devider_pipeline -i hiv_test/3000_95_3.fastq.gz -r hiv_test/OR483991.1.fasta -o devider_pipeline_output 
 
 # results folder
 ls devider_pipeline_output
