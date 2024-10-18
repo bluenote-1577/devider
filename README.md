@@ -81,14 +81,14 @@ ls devider_pipeline_output
 ls devider_pipeline_output/pipeline_files
 ```
 
-If you **did not** install via conda, you must ensure
+If you **did not** install via conda and want to run the pipeline script, ensure the following are in `PATH`. 
 
 * tabix
 * minimap2
 * lofreq
 * devider
 
-are in `PATH`. Then run `scripts/run_devider_pipeline` in the GitHub repository.
+Then run `scripts/run_devider_pipeline` in the GitHub repository.
 
 ## How to use devider
 
