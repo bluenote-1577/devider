@@ -99,4 +99,4 @@ Then run `scripts/run_devider_pipeline` in the GitHub repository.
 
 ## Citation
 
-Forthcoming.
+devider: long-read reconstruction of many diverse haplotypes. Jim Shaw, Christina Boucher, Yun William Yu, Noelle Noyes, Heng Li. bioRxiv (2024).
