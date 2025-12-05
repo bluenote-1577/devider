@@ -13,6 +13,7 @@ pub fn simple_consensus(
     partition: &Vec<HapFinalResultString>,
     options: &Options,
     _vcf_profile: &VcfProfile,
+    first: bool,
 ){
     if partition.len() == 0{
         return;
@@ -113,7 +114,14 @@ pub fn simple_consensus(
     //write consensus strings to file
     //consensus file goes to options.output_dir/consensus.fasta
     let consensus_file = format!("{}/majority_vote_haplotypes.fasta", options.output_dir);
-    let bufwriter = BufWriter::new(std::fs::File::create(consensus_file).unwrap());
+    let bufwriter;
+    
+    if first{
+        bufwriter = BufWriter::new(std::fs::File::create(consensus_file).unwrap());
+    }
+    else{
+        bufwriter = BufWriter::new(std::fs::OpenOptions::new().append(true).create(true).open(consensus_file).unwrap());
+    }
     let mut consensus_writer = bio::io::fasta::Writer::from_bufwriter(bufwriter);
     for (i, consensus_string) in consensus_strings.iter().enumerate(){
         let id = format!("Contig:{},Range:{}-{},Haplotype:{},Abundance:{},Depth:{} SimpleConsensus", contig_range.0, start_s, end_s, i, partition[i].relative_abundances, partition[i].depth);

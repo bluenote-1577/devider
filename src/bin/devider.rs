@@ -140,6 +140,7 @@ fn main() {
 
     fs::create_dir_all(&format!("{}/intermediate", contig_out_dir)).unwrap();
     let mut warn_first_length = true;
+    let mut first = true;
     for (contig, range) in contigs_to_phase.iter() {
         if !vcf_profile.vcf_pos_allele_map.contains_key(contig.as_str())
             || vcf_profile.vcf_pos_allele_map[contig.as_str()].len() < options.snp_count_filter
@@ -221,9 +222,12 @@ fn main() {
                     &final_partitions,
                     &options,
                     &vcf_profile,
+                    first,
                 );
             }
         }
+
+        first = false;
     }
     log::info!("Total time taken is {:?}", Instant::now() - start_t_initial);
 }

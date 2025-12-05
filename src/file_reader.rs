@@ -182,12 +182,13 @@ fn alignment_passed_check(
     mapq: u8,
     use_supplementary: bool,
     filter_supplementary: bool,
+    supp_mapq_cutoff: u8,
     mapq_cutoff: u8
 ) -> (bool, bool) {
     let errors_mask = 1796;
     let secondary_mask = 256;
     let supplementary_mask = 2048;
-    let mapq_supp_cutoff = 60;
+    let mapq_supp_cutoff = supp_mapq_cutoff;
     let mapq_normal_cutoff = mapq_cutoff;
     let first_in_pair_mask = 64;
     let second_in_pair_mask = 128;
@@ -382,6 +383,7 @@ pub fn get_frags_from_bamvcf_rewrite(
                         record.mapq(),
                         use_supplementary,
                         filter_supplementary,
+                        options.supp_mapq_cutoff,
                         options.mapq_cutoff,
                     );
 
