@@ -1897,6 +1897,7 @@ fn print_final_hap_results(
                 fastq_writer.write_all(b"\n").unwrap();
             }
         }
+        id_writer.write_all(b"\n").unwrap();
     }
 }
 
