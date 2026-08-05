@@ -240,8 +240,8 @@ pub fn get_length_gn(all_frags: &Vec<Frag>) -> SnpPosition {
             first_pos = frag.first_position;
         }
     }
-    if last_pos > first_pos {
-        return last_pos - first_pos;
+    if last_pos >= first_pos {
+        return last_pos - first_pos + 1;
     }
     else{
         return 0
