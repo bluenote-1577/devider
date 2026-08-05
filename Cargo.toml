@@ -13,7 +13,7 @@ statrs="0.17"
 rayon="1.7"
 rand="0.8"
 rand_core="0.6"
-rust-htslib= { version = "0.44", default-features = false }
+rust-htslib= { version = "1.0.1", default-features = false }
 clap = { version = "=4.2.0", features = ["derive"] }
 block-aligner = { version = "0.4", default-features = false }
 debruijn = "0.3"
