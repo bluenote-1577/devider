@@ -748,7 +748,7 @@ pub fn print_dbg(dbg: &FxHashMap<VarMer, DBGInfo>, file_name: &str) {
                 info.coverage,
                 node.len()
             ));
-            dot.push_str(&format!("    \"{}\" -> \"{}\";\n", s1, s1));
+            dot.push_str(&format!("    \"{}\";\n", s1));
         }
         for out in out_edges {
             let mut s1 = node
