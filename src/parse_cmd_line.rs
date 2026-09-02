@@ -125,7 +125,23 @@ pub struct Options{
 
     /// FDR for strand bias filtering.
     #[arg(long, default_value_t = 0.005, help_heading = "ALGORITHM")]
-    pub strand_bias_fdr: f64
+    pub strand_bias_fdr: f64,
+
+    /// Unitig-pruning significance threshold.
+    #[arg(long, default_value_t = 0.005, help_heading = "ALGORITHM")]
+    pub pruning_threshold: f64,
+
+    /// Probability of a deletion error when filtering unitigs.
+    #[arg(long, default_value_t = 0.35, help_heading = "ALGORITHM")]
+    pub del_prob: f64,
+
+    /// Probability of a reference-to-alternate error when filtering unitigs.
+    #[arg(long, default_value_t = 0.15, help_heading = "ALGORITHM")]
+    pub rtoa_prob: f64,
+
+    /// Probability of an alternate-to-reference error when filtering unitigs.
+    #[arg(long, default_value_t = 0.10, help_heading = "ALGORITHM")]
+    pub ator_prob: f64,
 }
 
 

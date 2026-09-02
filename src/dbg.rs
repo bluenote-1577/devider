@@ -151,7 +151,7 @@ pub fn devider_run(
     log::debug!("Cleaning unitigs");
     let mut final_unitigs = unitigs;
     for i in 1..3 {
-        let bad_unitigs = query_unitigs(&final_unitigs, i);
+        let bad_unitigs = query_unitigs(&final_unitigs, i, options);
         log::debug!("Number of bad unitigs {}", bad_unitigs.len());
         let filtered_unitigs = filter_dbg(final_unitigs, None, Some(bad_unitigs), k + end, false, num_snps_range);
         print_dbg(&filtered_unitigs, format!("{}/intermediate/clean_dbg_{}.dot", options.output_dir, i).as_str());
@@ -1388,7 +1388,11 @@ fn print_varmer_d(varmer_d: &DictFrag, trace: bool) {
     }
 }
 
-pub fn query_unitigs(unitigs: &FxHashMap<VarMer, DBGInfo>, threshold: usize) -> Vec<VarMer> {
+pub fn query_unitigs(
+    unitigs: &FxHashMap<VarMer, DBGInfo>,
+    threshold: usize,
+    options: &Options,
+) -> Vec<VarMer> {
     let mut dict_unitigs = vec![];
     let mut bad_unitigs = vec![];
     for unitig in unitigs.iter() {
@@ -1514,10 +1518,10 @@ pub fn query_unitigs(unitigs: &FxHashMap<VarMer, DBGInfo>, threshold: usize) -> 
 
         let mult;
         if dp_res.rtoa_max.len() == 0 && dp_res.ator_max.len() == 0 {
-            mult = 0.35.powi(dp_res.dels_max.len() as i32);
+            mult = options.del_prob.powi(dp_res.dels_max.len() as i32);
         } else {
-            mult = 0.15.powi(dp_res.rtoa_max.len() as i32)
-                * 0.10.powi(dp_res.ator_max.len() as i32);
+            mult = options.rtoa_prob.powi(dp_res.rtoa_max.len() as i32)
+                * options.ator_prob.powi(dp_res.ator_max.len() as i32);
         }
 
         if num_errs > 0.{
@@ -1525,7 +1529,7 @@ pub fn query_unitigs(unitigs: &FxHashMap<VarMer, DBGInfo>, threshold: usize) -> 
                 final_cov as u64,
                 unitig1.cov as u64,
                 mult,
-            ) > 0.005
+                ) > options.pruning_threshold
             {
                 failed = true;
                 log::trace!("BAD ERR: {}", final_cov);
