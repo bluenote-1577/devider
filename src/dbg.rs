@@ -719,6 +719,10 @@ fn get_edges_varmers(dbg: &mut FxHashMap<VarMer, DBGInfo>, k: usize) {
         if let Some(in_varmers) = suffixes.get(prefix) {
             for in_varmer in in_varmers.iter() {
                 for out_varmer in out_varmers.iter() {
+                    if prefix.is_empty() && in_varmer.last().unwrap().0 >= out_varmer.first().unwrap().0 {
+                        // Ensure edges only point forward, also for k=1
+                        continue;
+                    }
                     if let Some(in_info) = dbg.get_mut(&**in_varmer) {
                         in_info.out_varmers.push(Arc::clone(out_varmer));
                     }
@@ -748,7 +752,7 @@ pub fn print_dbg(dbg: &FxHashMap<VarMer, DBGInfo>, file_name: &str) {
                 info.coverage,
                 node.len()
             ));
-            dot.push_str(&format!("    \"{}\" -> \"{}\";\n", s1, s1));
+            dot.push_str(&format!("    \"{}\";\n", s1));
         }
         for out in out_edges {
             let mut s1 = node
