@@ -116,15 +116,12 @@ pub fn devider_run(
     let (mut kmer_count, used_snp_positions) = count_kmers(&dbg_frags, k);
     let num_snps_range = used_snp_positions.len();
     let total_cov = kmer_count.iter().fold(0, |acc, (_varmer, cov)| acc + cov);
-    if (num_snps_range as u64) < k as u64 {
-        log::warn!(
-            "Number of SNP positions actually used ({}) is less than k ({}) for contig {}; this is unexpected. Proceeding with a fallback coverage calculation, but results for this contig should be inspected carefully.",
-            num_snps_range, k, contig_name
-        );
-    }
-    let num_kmer_windows = (num_snps_range as u64).saturating_sub(k as u64) + 1;
+    // num_snps_range can be smaller than k (e.g. with --bed-file, where k is picked using the
+    // whole-contig SNP count, not just what's actually covered in this local region). Clamp k
+    // here so this doesn't divide by zero.
+    let k_capped = (k as u64).min(num_snps_range as u64);
     let min_cov = u64::max(
-        total_cov / num_kmer_windows / coverage_divider,
+        total_cov / (num_snps_range as u64 - k_capped + 1) / coverage_divider,
         2,
     );
     log::debug!("Minimum coverage for global filter is : {:?}", min_cov);
@@ -174,7 +171,7 @@ pub fn devider_run(
 
     
     //Remove small disconnected components that have length < 1.5 * k and coverage < mean_cov / 100
-    let min_cov_small_disconnected = u64::max(total_cov / num_kmer_windows / (coverage_divider) * 4, 2);
+    let min_cov_small_disconnected = u64::max(total_cov / (num_snps_range as u64 - k_capped + 1) / (coverage_divider) * 4, 2);
     log::trace!("Second round min cov :{}", min_cov_small_disconnected);
     final_unitigs = filter_dbg(final_unitigs, Some(min_cov_small_disconnected), None, k + end, true, num_snps_range);
     final_unitigs = get_unitigs(&final_unitigs, k + end, true);
