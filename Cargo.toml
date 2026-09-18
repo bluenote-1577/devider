@@ -1,6 +1,6 @@
 [package]
 name = "devider"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["jim <jimshawster@gmail.com>"]
 edition = "2018"
 
